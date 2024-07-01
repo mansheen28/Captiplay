@@ -1,0 +1,23 @@
+.video-player-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh; /* Adjust the height as needed */
+}
+
+.video-player {
+  width: 90%; /* Adjust the width as needed */
+  max-width: 800px; /* Max width for the video player */
+}
+
+.controls {
+  margin-top: 5px;
+}
+
+.controls button {
+  margin: 0 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
