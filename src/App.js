@@ -6,24 +6,26 @@ import AddCaptionButton from "./Components/AddCaptionButton";
 import CaptionInput from "./Components/CaptionInput";
 import TimeInput from "./Components/TimeInput";
 import VideoUploadLink from "./Components/VideoUploadLink";
+import CaptionTable from './Components/CaptionTable';
 
 
 
 export default function App() {
    const [videoUrl, setVideoUrl] = useState('');
    const [captions, setCaptions] = useState([]);
+   const [captionText, setCaptionText] = useState('');
 
   const handleVideoUpload = (url) => {
     setVideoUrl(url);
   };
 
-  const handleCaptionSubmit = (caption) => {
-    setCaptions([...captions, { text: caption, startTime: '', endTime: '' }]);
+  const handleCaptionSubmit = (text) => {
+    setCaptionText(text);
   };
 
   const handleAddCaption = (startTime, endTime) => {
-    const captionText = ''; 
-    handleCaptionSubmit(captionText);
+    const newCaption = { text: captionText, startTime, endTime };
+    setCaptions([...captions, newCaption]);
   };
   
 
@@ -36,6 +38,7 @@ export default function App() {
         <CaptionInput onCaptionSubmit={handleCaptionSubmit}/>
         <TimeInput onAddCaption={handleAddCaption} />
         <AddCaptionButton />
+        <CaptionTable captions={captions} />
       </div>
     </>
   );
