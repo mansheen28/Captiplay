@@ -33,8 +33,8 @@ export default function App() {
     <>
       <Navbar />
       <div className="content container-main">
-        <VideoPlayerArea onUpload={handleVideoUpload}/>
-        <VideoUploadLink videoUrl={videoUrl}/>
+        <VideoPlayerArea videoUrl={videoUrl}/>
+        <VideoUploadLink onUpload={handleVideoUpload} />
         <CaptionInput onCaptionSubmit={handleCaptionSubmit}/>
         <TimeInput onAddCaption={handleAddCaption} />
         <AddCaptionButton />
