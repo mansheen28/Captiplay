@@ -1,14 +1,13 @@
 import React from 'react';
 import '../Css/AddCaptionButton.css';
 
-function AddCaptionButton({ onClick }) {
+function AddCaptionButton(props) {
   return (
     <div className='addCaptionButton'>
-    <button onClick={onClick} className="add-caption-button">
-      Add Caption
-    </button>
+      <button onClick={props.onClick} className="add-caption-button">
+        Add Caption
+      </button>
     </div>
-    
   );
 }
 

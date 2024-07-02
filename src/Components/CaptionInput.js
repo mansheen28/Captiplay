@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../Css/CaptionInput.css';
 
-function CaptionInput({ onCaptionSubmit }) {
-  const [caption, setCaption] = useState('');
-
+function CaptionInput(props) {
+  const handleInputChange = (e) => {
+    props.onChange(e.target.value);
+  };
 
   return (
     <div className="caption-input-container">
       <input
         type="text"
         placeholder="Enter caption"
-        value={caption}
-        onChange={(e) => setCaption(e.target.value)}
+        value={props.value}
+        onChange={handleInputChange}
         className="caption-input"
       />
     </div>

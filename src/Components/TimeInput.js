@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../Css/TimeInput.css';
 
-function TimeInput() {
-  const [startTime, setStartTime] = useState('');
-  const [endTime, setEndTime] = useState('');
-
+function TimeInput({ onStartTimeChange, onEndTimeChange, startTime, endTime }) {
   return (
     <div className="time-input-container">
       <input
         type="text"
-        placeholder="Start Time (seconds)"
+        placeholder="Start Time (e.g., 0:10)"
         value={startTime}
-        onChange={(e) => setStartTime(e.target.value)}
+        onChange={(e) => onStartTimeChange(e.target.value)}
         className="time-input"
       />
       <input
         type="text"
-        placeholder="End Time (seconds)"
+        placeholder="End Time (e.g., 1:30)"
         value={endTime}
-        onChange={(e) => setEndTime(e.target.value)}
+        onChange={(e) => onEndTimeChange(e.target.value)}
         className="time-input"
       />
     </div>
