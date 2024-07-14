@@ -1,28 +1,35 @@
+/* CaptionTable.css */
 .caption-table-container {
-  margin: 20px 0;
-  text-align: center;
+  margin-top: 20px;
 }
 
 .caption-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 0 auto;
 }
 
-.caption-table th,
-.caption-table td {
-  border: 1px solid #ccc;
+.caption-table th, .caption-table td {
+  border: 1px solid #ddd;
   padding: 8px;
-  text-align: center;
 }
 
 .caption-table th {
   background-color: #f2f2f2;
+  text-align: left;
 }
 
-.caption-table td {
-  background-color: #fafafa;
+.delete-caption-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }
+
+.delete-caption-button:hover {
+  background-color: #ff1a1a;
+}
+
 
 .grey-line {
   border: 0;

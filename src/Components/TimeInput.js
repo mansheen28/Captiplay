@@ -2,20 +2,28 @@ import React from 'react';
 import '../Css/TimeInput.css';
 
 function TimeInput({ onStartTimeChange, onEndTimeChange, startTime, endTime }) {
+  const handleStartTimeChange = (e) => {
+    onStartTimeChange(e.target.value);
+  };
+
+  const handleEndTimeChange = (e) => {
+    onEndTimeChange(e.target.value);
+  };
+
   return (
     <div className="time-input-container">
       <input
         type="text"
-        placeholder="Start Time (e.g., 0:10)"
+        placeholder="Start Time (MM:SS)"
         value={startTime}
-        onChange={(e) => onStartTimeChange(e.target.value)}
+        onChange={handleStartTimeChange}
         className="time-input"
       />
       <input
         type="text"
-        placeholder="End Time (e.g., 1:30)"
+        placeholder="End Time (MM:SS)"
         value={endTime}
-        onChange={(e) => onEndTimeChange(e.target.value)}
+        onChange={handleEndTimeChange}
         className="time-input"
       />
     </div>

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import '../Css/VideoPlayerArea.css';
 
-function VideoPlayerArea({ videoUrl, captions }) {
+function VideoPlayerArea({ videoUrl, captions, onPlaybackChange }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -27,11 +27,26 @@ function VideoPlayerArea({ videoUrl, captions }) {
       }
 
       // Add new cues
-      captions.forEach(({ text, startTime, endTime }) => {
-        track.addCue(new VTTCue(startTime, endTime, text));
+      captions.forEach(({ text, startTimeSeconds, endTimeSeconds }) => {
+        track.addCue(new VTTCue(startTimeSeconds, endTimeSeconds, text));
       });
     }
   }, [captions]);
+
+  useEffect(() => {
+    const handlePlayPause = () => {
+      onPlaybackChange(!videoRef.current.paused);
+    };
+
+    const videoElement = videoRef.current;
+    videoElement.addEventListener('play', handlePlayPause);
+    videoElement.addEventListener('pause', handlePlayPause);
+
+    return () => {
+      videoElement.removeEventListener('play', handlePlayPause);
+      videoElement.removeEventListener('pause', handlePlayPause);
+    };
+  }, [onPlaybackChange]);
 
   return (
     <div className="video-player-container">
@@ -39,8 +54,7 @@ function VideoPlayerArea({ videoUrl, captions }) {
         <source src={videoUrl} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div className="controls">
-      </div>
+      <div className="controls"></div>
     </div>
   );
 }

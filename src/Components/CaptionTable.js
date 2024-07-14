@@ -1,31 +1,29 @@
 import React from 'react';
 import '../Css/CaptionTable.css';
 
-function formatTime(timeInSeconds) {
-  const minutes = Math.floor(timeInSeconds / 60);
-  const seconds = Math.floor(timeInSeconds % 60);
-  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-}
-
-function CaptionTable({ captions }) {
+function CaptionTable({ captions, onDelete }) {
   return (
     <div className="caption-table-container">
-      <hr className="grey-line" />
-      <h2>CAPTIONS</h2>
       <table className="caption-table">
         <thead>
           <tr>
-            <th>Caption</th>
+            <th>Text</th>
             <th>Start Time</th>
             <th>End Time</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {captions.map((caption, index) => (
             <tr key={index}>
               <td>{caption.text}</td>
-              <td>{formatTime(caption.startTime)}</td>
-              <td>{formatTime(caption.endTime)}</td>
+              <td>{caption.startTime}</td>
+              <td>{caption.endTime}</td>
+              <td>
+                <button onClick={() => onDelete(index)} className="delete-caption-button">
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
