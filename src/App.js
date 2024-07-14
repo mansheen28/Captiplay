@@ -15,6 +15,7 @@ export default function App() {
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [isPlaying, setIsPlaying] = useState(false);
+  const [videoDuration, setVideoDuration] = useState(0);
 
   const handleVideoUpload = (url) => {
     setVideoUrl(url);
@@ -58,6 +59,11 @@ export default function App() {
       const newStartTimeSeconds = parseTime(startTime);
       const newEndTimeSeconds = parseTime(endTime);
 
+      if (newEndTimeSeconds > videoDuration) {
+        alert("Caption end time cannot exceed the video length.");
+        return;
+      }
+
       if (hasOverlap(newStartTimeSeconds, newEndTimeSeconds)) {
         alert("Caption times overlap with an existing caption. Please adjust the timing.");
         return;
@@ -88,11 +94,15 @@ export default function App() {
     setIsPlaying(playing);
   };
 
+  const handleDurationChange = (duration) => {
+    setVideoDuration(duration);
+  };
+
   return (
     <>
       <Navbar />
       <div className="content container-main">
-        <VideoPlayerArea videoUrl={videoUrl} captions={captions} onPlaybackChange={handlePlaybackChange} />
+        <VideoPlayerArea videoUrl={videoUrl} captions={captions} onPlaybackChange={handlePlaybackChange} onDurationChange={handleDurationChange} />
         <VideoUploadLink onUpload={handleVideoUpload} />
         <CaptionInput onChange={handleCaptionChange} value={captionText} />
         <TimeInput 

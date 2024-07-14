@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import '../Css/VideoPlayerArea.css';
 
-function VideoPlayerArea({ videoUrl, captions, onPlaybackChange }) {
+function VideoPlayerArea({ videoUrl, captions, onPlaybackChange, onDurationChange }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -42,11 +42,18 @@ function VideoPlayerArea({ videoUrl, captions, onPlaybackChange }) {
     videoElement.addEventListener('play', handlePlayPause);
     videoElement.addEventListener('pause', handlePlayPause);
 
+    const handleLoadedMetadata = () => {
+      onDurationChange(videoRef.current.duration);
+    };
+
+    videoElement.addEventListener('loadedmetadata', handleLoadedMetadata);
+
     return () => {
       videoElement.removeEventListener('play', handlePlayPause);
       videoElement.removeEventListener('pause', handlePlayPause);
+      videoElement.removeEventListener('loadedmetadata', handleLoadedMetadata);
     };
-  }, [onPlaybackChange]);
+  }, [onPlaybackChange, onDurationChange]);
 
   return (
     <div className="video-player-container">
