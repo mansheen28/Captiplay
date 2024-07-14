@@ -100,8 +100,12 @@ export default function App() {
   };
 
   const handleDeleteCaption = (index) => {
-    const newCaptions = captions.filter((_, i) => i !== index);
-    setCaptions(newCaptions);
+    if (!isPlaying) {
+      const newCaptions = captions.filter((_, i) => i !== index);
+      setCaptions(newCaptions);
+    } else {
+      alert("Cannot delete captions while the video is playing. Please pause the video first.");
+    }
   };
 
   const handlePlaybackChange = (playing) => {
