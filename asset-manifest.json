@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.b40569d3.css",
-    "main.js": "/static/js/main.5016f066.js",
-    "static/js/453.fef43a7e.chunk.js": "/static/js/453.fef43a7e.chunk.js",
-    "static/media/CaptiPlay.png": "/static/media/CaptiPlay.119c416eb807cc03f7a4.png",
-    "index.html": "/index.html",
-    "main.b40569d3.css.map": "/static/css/main.b40569d3.css.map",
-    "main.5016f066.js.map": "/static/js/main.5016f066.js.map",
-    "453.fef43a7e.chunk.js.map": "/static/js/453.fef43a7e.chunk.js.map"
+    "main.css": "/Captiplay/static/css/main.b40569d3.css",
+    "main.js": "/Captiplay/static/js/main.dfdc9092.js",
+    "static/js/453.fef43a7e.chunk.js": "/Captiplay/static/js/453.fef43a7e.chunk.js",
+    "static/media/CaptiPlay.png": "/Captiplay/static/media/CaptiPlay.119c416eb807cc03f7a4.png",
+    "index.html": "/Captiplay/index.html",
+    "main.b40569d3.css.map": "/Captiplay/static/css/main.b40569d3.css.map",
+    "main.dfdc9092.js.map": "/Captiplay/static/js/main.dfdc9092.js.map",
+    "453.fef43a7e.chunk.js.map": "/Captiplay/static/js/453.fef43a7e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b40569d3.css",
-    "static/js/main.5016f066.js"
+    "static/js/main.dfdc9092.js"
   ]
 }
