@@ -42,6 +42,12 @@ export default function App() {
     return minutes * 60 + seconds;
   };
 
+  const hasOverlap = (newStart, newEnd) => {
+    return captions.some(({ startTimeSeconds, endTimeSeconds }) => {
+      return (newStart < endTimeSeconds && newEnd > startTimeSeconds);
+    });
+  };
+
   const handleAddCaption = () => {
     if (!isPlaying) {
       if (!validateTimeFormat(startTime) || !validateTimeFormat(endTime)) {
@@ -49,12 +55,20 @@ export default function App() {
         return;
       }
 
+      const newStartTimeSeconds = parseTime(startTime);
+      const newEndTimeSeconds = parseTime(endTime);
+
+      if (hasOverlap(newStartTimeSeconds, newEndTimeSeconds)) {
+        alert("Caption times overlap with an existing caption. Please adjust the timing.");
+        return;
+      }
+
       const newCaption = {
         text: captionText,
         startTime,
         endTime,
-        startTimeSeconds: parseTime(startTime),
-        endTimeSeconds: parseTime(endTime),
+        startTimeSeconds: newStartTimeSeconds,
+        endTimeSeconds: newEndTimeSeconds,
       };
       setCaptions([...captions, newCaption]);
       setCaptionText(''); // Clear caption input after adding
