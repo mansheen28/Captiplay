@@ -18,7 +18,21 @@ export default function App() {
   const [videoDuration, setVideoDuration] = useState(0);
 
   const handleVideoUpload = (url) => {
+    if (!isValidMp4Url(url)) {
+      alert("Please provide a valid MP4 video link.");
+      return;
+    }
     setVideoUrl(url);
+  };
+
+  const isValidMp4Url = (url) => {
+    const mp4Regex = /\.mp4$/i;
+    try {
+      new URL(url); // Check if the URL is valid
+    } catch (_) {
+      return false;
+    }
+    return mp4Regex.test(url);
   };
 
   const handleCaptionChange = (text) => {
